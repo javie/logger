@@ -17,7 +17,9 @@
 	root   = this;
 
 	// Create a safe reference to the Logger object for use below.
-	Logger = {};
+	Logger = function () {
+		return this.make();
+	};
 
 	// Export the object for **Node.js**, with
 	// backwards-compatibility for the old `require()` API. If we're in
