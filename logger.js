@@ -14,11 +14,11 @@
 	var root, Logger, _, cache;
 
 	// Save a reference to global object (`window` in the browser, `global` on the server)
-	root   = this;
+	root = this;
 
 	// Create a safe reference to the Logger object for use below.
 	Logger = function () {
-		return this.make();
+		return Logger.make();
 	};
 
 	// Export the object for **Node.js**, with
