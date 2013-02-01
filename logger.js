@@ -9,12 +9,12 @@
  * @license     MIT License
  */
 
-(function (console) { 'use strict';
-
-	var root, Logger, _, cache;
+(function () { 'use strict';
+	var root, Logger, _, cache, console;
 
 	// Save a reference to global object (`window` in the browser, `global` on the server)
-	root = this;
+	root    = this;
+	console = root.console;
 
 	// Create a safe reference to the Logger object for use below.
 	Logger = function () {
