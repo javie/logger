@@ -10,7 +10,7 @@
  * @license     MIT License
  */
 
-(function () { 'use strict';
+(function() { 'use strict';
 	var root, Logger, _, cache, console;
 
 	// Save a reference to global object (`window` in the browser, `global` on the server)
@@ -18,7 +18,7 @@
 	console = root.console;
 
 	// Create a safe reference to the Logger object for use below.
-	Logger = function () {
+	Logger = function() {
 		return Logger.make();
 	};
 
@@ -34,7 +34,7 @@
 		exports.Logger = Logger;
 	}
 	else {
-		// Register Javie namespace if it's not available yet. 
+		// Register Javie namespace if it's not available yet.
 		if ('undefined' === typeof root.Javie) {
 			root.Javie = {};
 		}
@@ -56,7 +56,7 @@
 	}
 
 	// turn arguments into array
-	function makeArray (args) {
+	function makeArray(args) {
 		return Array.prototype.slice.call(args);
 	}
 
@@ -81,21 +81,21 @@
 	Logger.LOG     = 'log';
 
 	// Enable Logger to run in this environment
-	Logger.enable = function enable () {
+	Logger.enable = function enable() {
 		this.enabled = true;
 	};
 
 	// Disable Logger to run in this environment
-	Logger.disable = function disable () {
+	Logger.disable = function disable() {
 		this.enabled = false;
 	};
 
 	// Get Logger enabled status
-	Logger.status = function status () {
+	Logger.status = function status() {
 		return this.enabled;
 	};
 
-	Logger.make = function make () {
+	Logger.make = function make() {
 		var self, post;
 
 		// return instance from cache
@@ -150,7 +150,7 @@
 			/**
 			* log marked as info
 			*/
-			info: function info () {
+			info: function info() {
 				var args;
 
 				args = makeArray(arguments);
@@ -165,7 +165,7 @@
 			/**
 			* log marked as debug
 			*/
-			debug: function debug () {
+			debug: function debug() {
 				var args;
 
 				args = makeArray(arguments);
@@ -180,7 +180,7 @@
 			/**
 			* log marked as error
 			*/
-			warning: function warning () {
+			warning: function warning() {
 				var args;
 
 				args = makeArray(arguments);
@@ -195,7 +195,7 @@
 			/**
 			* log marked as error
 			*/
-			error: function error () {
+			error: function error() {
 				var args;
 
 				args = makeArray(arguments);
@@ -210,7 +210,7 @@
 			/**
 			* log marked other than error, debug or info
 			*/
-			log: function log () {
+			log: function log() {
 				var args;
 
 				args = makeArray(arguments);
@@ -225,7 +225,7 @@
 			/**
 			* log marked other than error, debug or info (with log type as first parameter)
 			*/
-			post: function post () {
+			post: function post() {
 				var args;
 
 				args = makeArray(arguments);
@@ -241,4 +241,3 @@
 	};
 
 }).call(this);
-
