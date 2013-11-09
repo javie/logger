@@ -1,6 +1,6 @@
-root    = exports ? this
-cache   = null
-enabled = false
+root     = exports ? this
+instance = null
+enabled  = false
 
 level =
 	ERROR: 'error'
@@ -11,14 +11,6 @@ level =
 
 Logger = ->
 	Logger.make()
-
-if exports?
-	module.exports = Logger if module? and module.exports
-
-	root.Logger = Logger
-else
-	root.Javie = {} unless root.Javie?
-	root.Javie.Logger = Logger
 
 array_make = (args) ->
 	Array.prototype.slice.call(args)
@@ -49,7 +41,7 @@ post = (type, message) ->
 			c.log("[#{type.toUpperCase()}]", message)
 			true
 
-class Dispatcher
+class Logger
 	logs: []
 	dispatch: (type, message) ->
 		result = dispatch(type, message)
@@ -69,15 +61,21 @@ class Dispatcher
 	post: (type, message) ->
 		@dispatch(type, [message])
 
-Logger.enable = ->
-	enabled = true
+class LoggerRepository
+	constructor: ->
+		return @make()
+	@make: ->
+		instance ?= new Logger
+	@enable: ->
+		enabled = true
+	@disable: ->
+		enabled = false
+	@status: ->
+		enabled
 
-Logger.disable = ->
-	enabled = false
-
-Logger.status = ->
-	enabled
-
-Logger.make = ->
-	cache = new Dispatcher unless cache?
-	cache
+if exports?
+	module.exports = LoggerRepository if module? and module.exports
+	root.Logger = LoggerRepository
+else
+	root.Javie = {} unless root.Javie?
+	root.Javie.Logger = LoggerRepository
