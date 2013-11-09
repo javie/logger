@@ -91,11 +91,11 @@
 
   LoggerRepository = (function() {
     function LoggerRepository() {
-      return this.make();
+      return new Logger;
     }
 
     LoggerRepository.make = function() {
-      return instance != null ? instance : instance = new Logger;
+      return instance != null ? instance : instance = new LoggerRepository();
     };
 
     LoggerRepository.enable = function() {

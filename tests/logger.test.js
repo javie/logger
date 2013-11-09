@@ -2,7 +2,7 @@ describe('Javie.Logger', function () {
 	var Logger, stub;
 
 	Logger = require(__dirname+'/../logger.js');
-	stub   = new Logger;
+	stub   = Logger.make();
 
 	it('should return status true when Logger is enabled', function (done) {
 		Logger.enable();

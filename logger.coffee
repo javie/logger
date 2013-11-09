@@ -60,9 +60,9 @@ class Logger
 
 class LoggerRepository
 	constructor: ->
-		return @make()
+		return new Logger
 	@make: ->
-		instance ?= new Logger
+		instance ?= new LoggerRepository()
 	@enable: ->
 		enabled = true
 	@disable: ->
