@@ -20,59 +20,54 @@ else
 	root.Javie = {} unless root.Javie?
 	root.Javie.Logger = Logger
 
-# Make an array from arguments.
 array_make = (args) ->
 	Array.prototype.slice.call(args)
 
 dispatch = (type, message) ->
 	return false unless enabled
-	post type, message
+	post(type, message)
 
 post = (type, message) ->
 	c = console
 	switch type
 		when 'info'
-			c.info message
+			c.info(message)
 			true
 		when 'debug' and c.debug?
-			c.debug message
+			c.debug(message)
 			true
 		when 'warning'
-			c.warn message
+			c.warn(message)
 			true
 		when 'error' and c.error?
-			c.error message
+			c.error(message)
 			true
 		when 'log'
-			c.log message
+			c.log(message)
 			true
 		else
-			c.log "[#{type.toUpperCase()}]", message
+			c.log("[#{type.toUpperCase()}]", message)
 			true
 
 class Dispatcher
 	logs: []
 	dispatch: (type, message) ->
-		result  = dispatch type, message
+		result = dispatch(type, message)
 
-		message.unshift type
-		@logs.push message
+		message.unshift(type)
+		@logs.push(message)
 
 		result
 	info: ->
-		message = array_make arguments
-		@dispatch level.INFO, message
+		@dispatch(level.INFO, array_make(arguments))
 	debug: ->
-		message = array_make arguments
-		@dispatch level.DEBUG, message
+		@dispatch(level.DEBUG, array_make(arguments))
 	warning: ->
-		message = array_make arguments
-		@dispatch level.WARNING, message
+		@dispatch(level.WARNING, array_make(arguments))
 	log: ->
-		message = array_make arguments
-		@dispatch level.LOG, message
+		@dispatch(level.LOG, array_make(arguments))
 	post: (type, message) ->
-		@dispatch type, [message]
+		@dispatch(type, [message])
 
 Logger.enable = ->
 	enabled = true

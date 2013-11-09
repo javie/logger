@@ -82,27 +82,19 @@
     };
 
     Dispatcher.prototype.info = function() {
-      var message;
-      message = array_make(arguments);
-      return this.dispatch(level.INFO, message);
+      return this.dispatch(level.INFO, array_make(arguments));
     };
 
     Dispatcher.prototype.debug = function() {
-      var message;
-      message = array_make(arguments);
-      return this.dispatch(level.DEBUG, message);
+      return this.dispatch(level.DEBUG, array_make(arguments));
     };
 
     Dispatcher.prototype.warning = function() {
-      var message;
-      message = array_make(arguments);
-      return this.dispatch(level.WARNING, message);
+      return this.dispatch(level.WARNING, array_make(arguments));
     };
 
     Dispatcher.prototype.log = function() {
-      var message;
-      message = array_make(arguments);
-      return this.dispatch(level.LOG, message);
+      return this.dispatch(level.LOG, array_make(arguments));
     };
 
     Dispatcher.prototype.post = function(type, message) {
