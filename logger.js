@@ -16,10 +16,6 @@
     LOG: 'log'
   };
 
-  Logger = function() {
-    return Logger.make();
-  };
-
   array_make = function(args) {
     return Array.prototype.slice.call(args);
   };

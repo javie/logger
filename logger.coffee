@@ -9,9 +9,6 @@ level =
 	DEBUG: 'debug'
 	LOG: 'log'
 
-Logger = ->
-	Logger.make()
-
 array_make = (args) ->
 	Array.prototype.slice.call(args)
 
