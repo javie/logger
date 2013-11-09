@@ -1,9 +1,9 @@
 describe('Javie.Logger', function () {
-	var Logger, l;
+	var Logger, stub;
 
 	Logger = require(__dirname+'/../logger.js');
-	l      = Logger.make();
-	
+	stub   = new Logger;
+
 	it('should return status true when Logger is enabled', function (done) {
 		Logger.enable();
 
@@ -17,6 +17,66 @@ describe('Javie.Logger', function () {
 
 		if (Logger.status() === false) {
 			done();
+		}
+	});
+
+	it('should be able to Logger::info', function (done) {
+		Logger.enable();
+
+		try {
+			if (stub.info('echoed!')) {
+				done();
+			}
+		} catch (e) {
+
+		}
+	});
+
+	it('should be able to Logger::debug', function (done) {
+		Logger.enable();
+
+		try {
+			if (stub.debug('echoed!')) {
+				done();
+			}
+		} catch (e) {
+
+		}
+	});
+
+	it('should be able to Logger::warning', function (done) {
+		Logger.enable();
+
+		try {
+			if (stub.warning('echoed!')) {
+				done();
+			}
+		} catch (e) {
+
+		}
+	});
+
+	it('should be able to Logger::log', function (done) {
+		Logger.enable();
+
+		try {
+			if (stub.log('echoed!')) {
+				done();
+			}
+		} catch (e) {
+
+		}
+	});
+
+	it('should be able to Logger::other', function (done) {
+		Logger.enable();
+
+		try {
+			if (stub.post('foo', 'echoed!')) {
+				done();
+			}
+		} catch (e) {
+
 		}
 	});
 });
