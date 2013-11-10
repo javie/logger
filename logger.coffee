@@ -1,7 +1,23 @@
-root     = exports ? this
-instance = null
-enabled  = false
+###
+ * ==========================================================
+ * Javie.Logger
+ * ==========================================================
+ *
+ * Logger Helper for Client-side JavaScript and Node.js
+ *
+ * @package Javie
+ * @class   Logger
+ * @require console
+ * @version 1.1.0-dev
+ * @since   0.1.0
+ * @author  Mior Muhammad Zaki <https://github.com/crynobone>
+ * @license MIT License
+ * ==========================================================
+###
 
+root = exports ? this
+logger = null
+enabled = false
 level =
 	ERROR: 'error'
 	WARNING: 'warning'
@@ -60,9 +76,9 @@ class Logger
 
 class LoggerRepository
 	constructor: ->
-		return new Logger
+		return LoggerRepository.make()
 	@make: ->
-		instance ?= new LoggerRepository()
+		logger ?= new Logger
 	@enable: ->
 		enabled = true
 	@disable: ->
